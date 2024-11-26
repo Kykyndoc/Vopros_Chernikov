@@ -1,12 +1,32 @@
-{% extends 'flatpages/default.html' %} 
+{% extends 'flatpages/default.html' %}
+
+{% load censorship_filters %}
  
 <!-- Название у нас будет products -->
 {% block title %}
 Posts
 {% endblock title %}
  
-<!-- В контенте на странице мы выводим все товары -->
 {% block content %}
-<h1>Все нововсти</h1>
-{{ posts }}
+   <h1>Все статьи: {{ posts|length }} </h1>
+   <hr>
+   {% if posts %}
+       <table>
+           <tr>
+               <td>Заголовок</td>
+               <td>Дата публикации</td>
+               <td>Текст</td>
+           </tr>
+           {% for post in posts %}
+           <tr>
+               <td>{{ post.title|censor }}</td>
+               <td>{{ post.dateCreation|date:'d M Y' }}</td>
+               <td>{{ post.text|truncatewords:20|censor }}</td>
+           </tr>
+           {% endfor %}
+
+       </table>
+   {% else %}
+       <h2>Новостей нет!</h2>
+   {% endif %}
 {% endblock content %}
