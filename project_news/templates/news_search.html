@@ -1,8 +1,6 @@
 {% extends "flatpages/default.html" %}
 
-{% load custom_filters %}
-
-{% load custom_tags %}
+{% load censorship_filters %}
 
 {% block title %}
 Search
@@ -24,7 +22,7 @@ Search
                <td>Текст</td>
            </tr>
 
-           {% for post in post_search %}
+           {% for post in news_search %}
             <tr>
                 <td>{{ post.title|censor }}</td>
                 <td>{{ post.dateCreation|date:'d M Y' }}</td>
