@@ -1,6 +1,6 @@
 from django.urls import path
 # Импортируем созданное нами представление
-from .views import PostList, PostDetail, NewsSearch
+from .views import PostList, PostDetail, NewsSearch, NewsCreateView, ArticleCreateView
 
 
 urlpatterns = [
@@ -11,6 +11,8 @@ urlpatterns = [
    # а Django ожидает функцию, нам надо представить этот класс в виде view.
    # Для этого вызываем метод as_view.
    path('', PostList.as_view()),
-   path('<int:pk>', PostDetail.as_view()),
+   path('<int:pk>', PostDetail.as_view(), name='post_detail'),
    path('search', NewsSearch.as_view()),
+   path('create', NewsCreateView.as_view(), name='news_create'),
+   path('articles/create', ArticleCreateView.as_view(), name='article_create'),
 ]
