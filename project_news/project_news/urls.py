@@ -22,5 +22,5 @@ urlpatterns = [
    path('pages/', include('django.contrib.flatpages.urls')),
    path('', include('news.urls')),
    path('protect/', include('protect.urls')),
-   path('sign/', include('sign.urls')),
+   path('protect/sign/', include('sign.urls')),
 ]

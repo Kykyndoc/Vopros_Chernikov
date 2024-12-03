@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'fpages',
     'news',
     'accounts',
-    'django_filters'
+    'django_filters',
     'sign',
     'protect',
 ]
@@ -137,4 +137,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 LOGIN_URL = 'sign/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/news/'
