@@ -4,6 +4,7 @@ from .filters import PostFilter
 from .forms import PostForm
 from django.urls import reverse
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class PostList(ListView):
@@ -60,7 +61,7 @@ class ArticleCreateView(CreateView):
     def get_success_url(self):
         return reverse('post_detail', args=[self.object.pk])
 
-class NewsUpdateView(UpdateView):
+class NewsUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
     template_name = 'news_create.html'
@@ -72,7 +73,7 @@ class NewsUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('post_detail', args=[self.object.pk])
 
-class ArticleUpdateView(UpdateView):
+class ArticleUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
     template_name = 'article_create.html'

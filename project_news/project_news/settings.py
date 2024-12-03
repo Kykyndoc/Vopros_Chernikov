@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ib+y#*jji2kj_d)^+3^+mv2o!0qyu6@%@7v*33ca)so990t7q4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'news',
     'accounts',
     'django_filters'
+    'sign',
+    'protect',
 ]
 
 SITE_ID = 1
@@ -133,3 +135,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+LOGIN_URL = 'sign/login/'
+LOGIN_REDIRECT_URL = '/'
